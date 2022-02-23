@@ -1,0 +1,68 @@
+main .article-header-container {
+  margin: 0;
+  padding: 0;
+}
+
+main .article-header-container > div {
+  max-width: unset;
+}
+
+main .article-header {
+  text-align: center;
+}
+
+main .article-header .article-title, main .article-header .article-info {
+  padding: 0 2rem;
+  max-width: 768px;
+  margin: auto;
+}
+
+main .article-header .article-title h1 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: #333;
+  font-weight: 400;
+}
+
+main .article-header .article-info {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #767676;
+}
+
+main .article-header .article-info > div {
+  display: inline-flex;
+  justify-content: space-around;
+}
+
+main .article-header .article-readtime {
+  border-right: 1px solid #767676;
+  padding-right: 0.8rem;
+  margin-right: 0.8rem;
+}
+
+main .article-header .article-readtime::before {
+  height: 12px;
+  width: 16px;
+  background: url('/icons/clock.svg') no-repeat;
+  background-size: 12px 12px;
+  content: ' ';
+  display: inline-block;
+  transform: translate(0, 2px);
+}
+
+main .article-header .article-readtime:empty {
+  display: none;
+}
+
+main .article-header .article-picture img {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  main .article-header .article-title h1 {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }  
+}

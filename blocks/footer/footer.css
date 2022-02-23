@@ -1,14 +1,39 @@
 footer {
-  margin-top: 2rem;
   padding: 2rem;
-  background-color: rgba(var(--text-color) / 10%);
+  background-color: #404040;
 }
 
 footer .footer {
   max-width: 768px;
   margin: auto;
+  text-align: center;
+  color: white;
+  font-size: 14px;
 }
 
 footer .footer p {
   margin: 0;
+}
+
+footer .footer a:any-link {
+  color: white;
+}
+
+footer .footer img {
+  max-height: 40px;
+}
+
+footer .footer > div > div {
+  padding: 8px;
+}
+
+/* social */
+
+footer .footer .social {
+  display: flex;
+  justify-content: center;
+}
+
+footer .footer .social p {
+  padding: 5px;
 }

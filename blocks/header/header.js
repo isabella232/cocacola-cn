@@ -1,4 +1,4 @@
-import { readBlockConfig } from '../../scripts/scripts.js';
+import { makeLinksRelative } from '../../scripts/scripts.js';
 
 /**
  * collapses all open nav sections
@@ -10,28 +10,48 @@ function collapseAllNavSections(sections) {
     section.setAttribute('aria-expanded', 'false');
   });
 }
+function dynamicHeaderStyle(block) {
+  const header = block.closest('header');
+  const observer = new IntersectionObserver((entries) => {
+    const isTop = entries[0].isIntersecting;
+    if (isTop) header.classList.remove('compact');
+    else header.classList.add('compact');
+  }, { threshold: 0.5 });
+  observer.observe(header);
+}
+
+function addSecondaryNav(block) {
+  const a = block.querySelector(`.nav-section a[href="${window.location.pathname}"]`);
+  if (a) {
+    const section = a.closest('.nav-section');
+    if (section.querySelector('ul')) {
+      const hero = document.querySelector('div.block.hero');
+      const secondaryNav = document.createElement('div');
+      secondaryNav.classList.add('nav-secondary');
+      secondaryNav.innerHTML = section.outerHTML;
+      hero.parentElement.append(secondaryNav);
+    }
+  }
+}
 
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
-
 export default async function decorate(block) {
-  const cfg = readBlockConfig(block);
   block.textContent = '';
 
   // fetch nav content
-  const navPath = cfg.nav || '/nav';
-  const resp = await fetch(`${navPath}.plain.html`);
+  const resp = await fetch('/nav.plain.html');
   const html = await resp.text();
 
   // decorate nav DOM
   const nav = document.createElement('div');
   nav.classList.add('nav');
-  nav.setAttribute('aria-role', 'navigation');
   const navSections = document.createElement('div');
   navSections.classList.add('nav-sections');
   nav.innerHTML = html;
+  makeLinksRelative(nav);
   nav.querySelectorAll(':scope > div').forEach((navSection, i) => {
     if (!i) {
       // first section is the brand section
@@ -66,4 +86,7 @@ export default async function decorate(block) {
   nav.setAttribute('aria-expanded', 'false');
 
   block.append(nav);
+  dynamicHeaderStyle(block);
+
+  addSecondaryNav(block);
 }

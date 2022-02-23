@@ -1,0 +1,79 @@
+main .images-grid-container > div {
+  max-width: unset;
+}
+
+main .images-grid-container {
+  padding: 0;
+}
+
+main .images-grid .row {
+  position: relative;
+  height: calc(100vh - 8.125rem);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+main .images-grid .row.left {
+  justify-content: flex-start;
+}
+
+main .images-grid .row.shadow {
+  text-shadow: 2px 2px 4px #00000080;
+}
+
+main .images-grid picture.bg-picture {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+main .images-grid .bg-picture img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+main .images-grid {
+  font-family: var(--font-family-headline);
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
+}
+
+main .images-grid .overlay {
+  max-width: 250px;
+  padding: 60px;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+main .images-grid .overlay p:first-child {
+  position: relative;
+}
+
+main .images-grid .overlay p:first-child::before {
+  content: '';
+  -webkit-mask-box-image: url('/icons/bubble.svg');
+  -webkit-mask-image: url('/icons/bubble.svg');
+  -webkit-mask-size: 11px 40px;
+  -webkit-mask-repeat: no-repeat;
+  vertical-align: text-bottom;
+  display: block;
+  position: absolute;
+  height: 40px;
+  width: 11px;
+  padding: 0;
+  bottom: -.8rem;
+  left: -1.6rem;
+  background: #fff;
+}
+
+main .images-grid .row.right .overlay {
+  border: 1px solid red;
+}

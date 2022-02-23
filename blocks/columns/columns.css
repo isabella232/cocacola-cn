@@ -1,0 +1,91 @@
+main .columns {
+    font-size: 16px;
+}
+
+main .columns > div {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+}
+
+main .columns > div:nth-child(odd) {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+main .columns h2 {
+    font-size: 28px;
+    font-weight: 500;
+}
+
+main .columns h2::before {
+    -webkit-mask-box-image: url('/icons/bubble.svg');
+    -webkit-mask-image: url('/icons/bubble.svg');
+    -webkit-mask-size: 11px 40px;
+    -webkit-mask-repeat: no-repeat;
+    display: block;
+    background: #f40000;
+    height: 40px;
+    width: 11px;
+    padding: 0;
+    position: relative;
+    vertical-align: text-bottom;
+    left: -1.6rem;
+    top: 5rem;
+    content: '';
+}
+
+main .columns img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 50vh;
+}
+
+@media (min-width: 900px) {
+    main .columns-container {
+        padding: 0;
+    }
+
+    main .columns-container > div {
+        max-width: unset;
+    }
+
+    main .columns .content-wrapper {
+        display: flex;
+        align-items: center;
+    }
+    
+    main .columns > div, 
+    main .columns > div:nth-child(odd) .content-wrapper {
+        justify-content: flex-end;
+    }
+    
+    main .columns .content {
+        max-width: 420px;
+        margin: 20px;
+    } 
+
+    main .columns > div > div {
+        width: 50%;
+    }
+    /* stylelint-disable-next-line no-descending-specificity */
+    main .columns > div, 
+    main .columns > div:nth-child(odd) {
+        flex-direction: unset;
+    }
+
+    main .columns > div:nth-child(odd) .image {
+        margin-left: 20px;
+    }
+
+    main .columns > div:nth-child(even) .image {
+        margin-right: 20px;
+    }
+
+    main .columns img {
+        width: 100%;
+        height: 400px;
+        min-height: unset;
+    }
+}
