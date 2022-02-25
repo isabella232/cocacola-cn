@@ -601,7 +601,7 @@ loadPage(document);
 
 export async function lookupPages(pathnames) {
   if (!window.pageIndex) {
-    const resp = await fetch('/query-index.json');
+    const resp = await fetch('/cn/query-index.json');
     const json = await resp.json();
     const lookup = {};
     json.data.forEach((row) => {
