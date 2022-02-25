@@ -1,0 +1,65 @@
+main .section > div.animation-wrapper {
+    max-width: 100%;
+    padding: 0;
+}
+
+main .animation {
+    --animation-height: 642px;
+}
+
+main .animation > div {
+    position: relative;
+    height: var(--animation-height);
+}
+
+main .animation > div > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+main .animation > div > *, main .animation img {
+    height: var(--animation-height);
+    object-fit: cover;
+    width: 100%;
+}
+
+main .animation video {
+    display: none;
+}
+
+main .animation video.animation-unhide {
+    display: block;
+}
+
+@media (min-width: 600px) {
+    main .animation {
+        --animation-height: 350px;
+    } 
+}
+
+main .hero-section .animation {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    
+    --animation-height: 642px;
+}
+
+main .hero-section-wide .animation {
+    --animation-height: 1200px;
+}
+
+@media (min-width: 600px) {
+    main .hero-section-wide .animation {
+        --animation-height: 1400px;
+    }
+}
+
+@media (min-width: 900px) {
+    main .hero-section-wide .animation {
+        --animation-height: 750px;
+    }
+}
