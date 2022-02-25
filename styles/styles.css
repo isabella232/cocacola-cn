@@ -136,16 +136,15 @@ main button:hover {
 }
 /* stylelint-disable */
 main input, main select {
-  border: 1px solid rgba(var(--text-color), .5);
+  border: 1px solid rgba(var(--text-color), 50%);
   color: rgb(var(--text-color));
-  background-color: rgba(var(--background-color), .5);
+  background-color: rgba(var(--background-color), 50%);
 }
-/* stylelint-enable */
 
 main select:hover, main input:hover {
-  border: 1px solid rgba(var(--text-color) / 90%);
+  border: 1px solid rgba(var(--text-color), 90%);
 }
-
+/* stylelint-enable */
 main .section-wrapper {
   padding: 0 2rem;
 }
