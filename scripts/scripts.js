@@ -460,6 +460,61 @@ export function decoratePictures(main) {
 }
 
 /**
+ * Build figcaption element
+ * @param {Element} p The original element to be placed in figcaption.
+ * @returns figCaptionEl Generated figcaption
+ */
+export function buildCaption(p) {
+  const figCaptionEl = document.createElement('figcaption');
+  p.classList.add('caption');
+  figCaptionEl.append(p);
+  return figCaptionEl;
+}
+
+/**
+ * Build figure element
+ * @param {Element} block The original element to be placed in figure.
+ * @returns figEl Generated figure
+ */
+export function buildFigure(block) {
+  const figure = document.createElement('figure');
+  figure.classList.add('figure');
+  block.childNodes.forEach((child) => {
+    const clone = child.cloneNode(true);
+    // picture, video, or embed link is NOT wrapped in P tag
+    if (clone.nodeName === 'PICTURE' || clone.nodeName === 'VIDEO' || clone.nodeName === 'A') {
+      figure.prepend(clone);
+    } else {
+      // content wrapped in P tag(s)
+      const picture = clone.querySelector('picture');
+      if (picture) {
+        figure.prepend(picture);
+      }
+      const video = clone.querySelector('video');
+      if (video) {
+        figure.prepend(video);
+      }
+      const caption = clone.querySelector('em');
+      if (caption) {
+        const figCaption = buildCaption(caption);
+        figure.append(figCaption);
+      }
+      const link = clone.querySelector('a');
+      if (link) {
+        const img = figure.querySelector('picture') || figure.querySelector('video');
+        if (img) {
+          // wrap picture or video in A tag
+          link.textContent = '';
+          link.append(img);
+        }
+        figure.prepend(link);
+      }
+    }
+  });
+  return figure;
+}
+
+/**
  * Adds the favicon.
  * @param {string} href The favicon URL
  */
@@ -583,8 +638,9 @@ function buildArticleHeader(mainEl) {
   const articleHeaderBlockEl = buildBlock('article-header', [
     [h1],
     [`<p>${readTime}</p><p>${publicationDate}</p>`],
-    [picture.closest('p')],
+    [picture.closest('p') || `<p>${createOptimizedPicture('../default-meta-image.png', '', true).outerHTML}</p>`],
   ]);
+
   div.append(articleHeaderBlockEl);
   mainEl.prepend(div);
 }
