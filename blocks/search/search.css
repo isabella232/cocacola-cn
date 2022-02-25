@@ -27,6 +27,7 @@ main .search .search-card h2 {
 }
 
 main .search .search-highlight {
-    background: rgba(var(--link-color) / 15%);
+    /* stylelint-disable-next-line color-function-notation */
+    background: rgba(var(--link-color), 0.2);
     color: unset;
 }
