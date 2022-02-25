@@ -59,8 +59,8 @@ main .images-grid .overlay p:first-child {
 
 main .images-grid .overlay p:first-child::before {
   content: '';
-  -webkit-mask-box-image: url('/icons/bubble.svg');
-  -webkit-mask-image: url('/icons/bubble.svg');
+  -webkit-mask-box-image: url('../../icons/bubble.svg');
+  -webkit-mask-image: url('../../icons/bubble.svg');
   -webkit-mask-size: 11px 40px;
   -webkit-mask-repeat: no-repeat;
   vertical-align: text-bottom;

@@ -45,7 +45,7 @@ main .article-header .article-readtime {
 main .article-header .article-readtime::before {
   height: 12px;
   width: 16px;
-  background: url('/icons/clock.svg') no-repeat;
+  background: url('../../icons/clock.svg') no-repeat;
   background-size: 12px 12px;
   content: ' ';
   display: inline-block;
