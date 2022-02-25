@@ -1,0 +1,46 @@
+.recommended-articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 64px;
+}
+
+.recommended-articles::before {
+    content: '探索更多精彩';
+    display: block;
+    width: 100%;
+    margin-bottom: 1.25rem;
+    border-left: 5px solid var(--color-red);
+    padding-left: 0.5rem;
+    font-size: 1.375rem;
+}
+
+.recommended-articles .article-card {
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 700px) {
+    .recommended-articles .article-card:nth-child(even) {
+        margin-left: 16px;
+    }
+}
+
+.recommended-articles .article-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.recommended-articles .article-card h3 {
+    padding: 0 1rem;
+    color: rgb(var(--text-color));
+    font-size: 1rem;
+}
+
+@media (min-width: 700px) {
+    .recommended-articles .article-card {
+        width: calc(50% - 8px);
+    }
+}
