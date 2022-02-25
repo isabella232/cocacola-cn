@@ -21,7 +21,7 @@
     margin-bottom: 2rem;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 600px) {
     .recommended-articles .article-card:nth-child(even) {
         margin-left: 16px;
     }
@@ -39,7 +39,7 @@
     font-size: 1rem;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 600px) {
     .recommended-articles .article-card {
         width: calc(50% - 8px);
     }
