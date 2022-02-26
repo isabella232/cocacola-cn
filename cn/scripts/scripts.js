@@ -613,6 +613,7 @@ export async function lookupPages(pathnames) {
     const lookup = {};
     json.data.forEach((row) => {
       lookup[row.path] = row;
+      if (row.image || row.image.startsWith('/default-meta-image.png')) row.image = `/cn${row.image}`;
     });
     window.pageIndex = { data: json.data, lookup };
   }
