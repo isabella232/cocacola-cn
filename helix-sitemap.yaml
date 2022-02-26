@@ -1,0 +1,11 @@
+version: 1
+
+sitemaps:
+  website:
+    origin: https://www.coca-colacompany.com
+    languages:
+      default:
+        source: /cn/query-index.json
+        destination: /cn/sitemap.xml
+        hreflang: cn
+        alternate: /{path}
