@@ -608,12 +608,12 @@ export function decorateIcons(main) {
 
 export async function lookupPages(pathnames) {
   if (!window.pageIndex) {
-    const resp = await fetch('/cn/query-index.json');
+    const resp = await fetch(`${window.hlx.codeBasePath}/query-index.json`);
     const json = await resp.json();
     const lookup = {};
     json.data.forEach((row) => {
       lookup[row.path] = row;
-      if (row.image || row.image.startsWith('/default-meta-image.png')) row.image = `/cn${row.image}`;
+      if (row.image || row.image.startsWith('/default-meta-image.png')) row.image = `/${window.hlx.codeBasePath}${row.image}`;
     });
     window.pageIndex = { data: json.data, lookup };
   }
@@ -629,10 +629,13 @@ function decorateBrandStyle(main) {
 }
 
 function setTheme() {
+  console.log('setting theme');
   const theme = getMetadata('theme');
   if (theme) {
     const themeClass = toClassName(theme);
     document.body.classList.add(themeClass);
+  } else if (window.location.pathname.includes('/news/')) {
+    document.body.classList.add('article');
   }
 }
 
@@ -648,7 +651,6 @@ function buildArticleHeader(mainEl) {
     [`<p>${readTime}</p><p>${publicationDate}</p>`],
     [picture.closest('p') || `<p>${createOptimizedPicture('../default-meta-image.png', '', true).outerHTML}</p>`],
   ]);
-
   div.append(articleHeaderBlockEl);
   mainEl.prepend(div);
 }
