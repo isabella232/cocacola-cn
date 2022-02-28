@@ -15,7 +15,11 @@ export default async function decorate(block) {
   const pathnames = [...block.querySelectorAll('a')].map((a) => new URL(a.href).pathname);
   block.textContent = '';
   const recommendedArticles = await lookupPages(pathnames);
-  recommendedArticles.forEach((row) => {
-    block.append(createCard(row, 'recommended'));
-  });
+  if (recommendedArticles.length) {
+    recommendedArticles.forEach((row) => {
+      block.append(createCard(row, 'recommended'));
+    });
+  } else {
+    block.remove();
+  }
 }
