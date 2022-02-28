@@ -613,6 +613,7 @@ export async function lookupPages(pathnames) {
     const lookup = {};
     json.data.forEach((row) => {
       lookup[row.path] = row;
+      if (row.image || row.image.startsWith('/default-meta-image.png')) row.image = `/cn${row.image}`;
     });
     window.pageIndex = { data: json.data, lookup };
   }
@@ -755,4 +756,8 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   // load anything that can be postponed to the latest here
+  setTimeout(() => {
+    // eslint-disable-next-line
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-N6GZQ6');
+  }, 4000);
 }

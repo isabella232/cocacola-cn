@@ -19,8 +19,8 @@ main .columns h2 {
 }
 
 main .columns h2::before {
-    -webkit-mask-box-image: url('/icons/bubble.svg');
-    -webkit-mask-image: url('/icons/bubble.svg');
+    -webkit-mask-box-image: url('./bubble.svg');
+    -webkit-mask-image: url('./bubble.svg');
     -webkit-mask-size: 11px 40px;
     -webkit-mask-repeat: no-repeat;
     display: block;
